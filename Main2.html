@@ -1,0 +1,193 @@
+<html>
+    <head>
+        <style>
+            body{
+                margin:0px;
+                background:rgb(42, 248, 235);
+            }
+            #top{
+                margin-top:30px;
+                margin-left:40px;
+                margin-right: 80px;
+            }
+            #logo{
+                float:left;
+
+            }
+            #logo img{
+                width:50px;
+            }
+            #menu{
+                float:right;
+            }
+            #menu ul{
+                list-style: none;
+                font-family: arial;
+                font-size:12px;
+            }
+            #menu ul li{
+                display: inline-block;
+                margin-left:100px;
+                letter-spacing: 2px;
+            }
+            #container{
+                width:100%;
+                height: 100%;
+                position: relative;
+                overflow: hidden; 
+            }
+            #box{
+                width:100%;
+                height: 100%;
+                position: absolute;
+                top:20%;
+                left:4%;
+            }
+            #box1,
+            #box2,
+            #box3,
+            #box4,
+            #box5,
+            #box6{
+                width:750px;
+                height: 200px;
+                font-family: fantasy;
+                font-size:11em;
+                position: relative;
+                overflow: hidden;
+                display: inline-block;
+            }
+            #box1{
+                transform:skewY(-15deg);
+            }
+            #box2{
+                transform: skewY(15deg);
+                margin-left:-5px;
+            }
+            #box3{
+                margin-top:-50;
+                transform:skewY(-15deg);
+            }
+            #box4{
+                margin-top:-50;
+                transform:skewY(15deg);
+                margin-left:-4px;
+            }
+            #box5{
+                margin-top:-50;
+                transform:skewY(-15deg);
+            }
+            #box6{
+                margin-top:-50;
+                transform:skewY(15deg);
+                margin-left:-5px;
+            }
+            #text1,
+            #text2,
+            #text3,
+            #text4,
+            #text5,
+            #text6{
+                width:1200px;
+                height: 200px;
+                position: absolute;
+                display: inline-block;
+                color:white;
+                transition:all .4s;
+            }
+            #text1,
+            #text3,
+            #text5{
+                left:750px;
+                animation: anim 1s forwards 0.1s;
+            }
+            #text2,
+            #text4,
+            #text6{
+                color:black;
+                left:-750px;
+                animation: anim2 1s forwards;
+            }
+            @keyframes anim{
+                from{
+                    left:1200px;
+                }
+                to{
+                    left:0px;
+                }
+            }
+            @keyframes anim2{
+                from{
+                    left:1200px;
+                }
+                to{
+                    left:-750px;
+                }
+            }
+            #text3,
+            #text4,
+            #text5,
+            #text6{
+                color:black;
+                opacity: 0.1;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="top">
+                <div id="logo">
+                    <img src="LOGO.png"/>
+                </div>
+                <div id="menu">
+                    <ul>
+                        <li>SERVICES</li>
+                        <li>PROJECT</li>
+                        <li>ABOUT</li>
+                        <li>CONTACT</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="box">
+                <div id="box1">
+                    <div id="text1">DAFT CREATION</div>
+                </div>
+                <div id="box2">
+                    <div id="text2">DAFT CREATION</div>
+                </div>
+                <br>
+                <div id="box3">
+                    <div id="text3">+DESIGN TEAM</div>
+                </div>
+                <div id="box4">
+                    <div id="text4">+DESIGN TEAM</div>
+                </div>
+                <br>
+                <div id="box5">
+                    <div id="text5">+CREATIVE LAB</div>
+                </div>
+                <div id="box6">
+                    <div id="text6">+CREATIVE LAB</div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        var mainbox = document.querySelector('#container');
+        var t = document.querySelector('#text1');
+        var t2 = document.querySelector('#text2');
+
+        function cursorfollow(e,mainbox)
+        {
+            var con = mainbox.getBoundingClientRect();
+            var x = ((e.pageX - con.x)*0.5);
+            t.style.transform = `translate(${x}px,0)`;
+            t2.style.transform = `translate(${x}px,0)`;
+        }
+
+        mainbox.addEventListener('mousemove',(e)=>{
+            setInterval(cursorfollow(e,mainbox),1000);
+        });
+    </script>
+</html>
